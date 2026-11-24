@@ -1,0 +1,15 @@
+# compiled classes
+bin/
+*.class
+
+# generated payslips
+output/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+sources.txt

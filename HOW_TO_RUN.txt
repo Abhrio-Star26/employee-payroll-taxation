@@ -1,0 +1,20 @@
+EMPLOYEE PAYROLL & INCOME TAX COMPUTATION UTILITY
+=================================================
+Requirement: Java 8 or newer installed (check with: java -version)
+
+WINDOWS : double-click run.bat
+LINUX/MAC: ./run.sh
+
+Or from a terminal in this folder:
+  java -jar PayrollUtility.jar
+  java -jar PayrollUtility.jar --fy=2025-26 --month=NOVEMBER --days=26
+  java -jar PayrollUtility.jar --fy=2024-25 --month=APRIL --days=22
+  java -jar PayrollUtility.jar --rebate=0
+  java -jar PayrollUtility.jar --help
+
+Results:
+  output/payslips/            one payslip .txt per employee
+  output/payroll_summary_*.txt summary register
+
+Edit data/employees.csv to change employees.
+Source code is in src/ (same code to upload to GitHub).

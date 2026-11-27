@@ -13,3 +13,4 @@ output/
 .classpath
 .project
 sources.txt
+*.jar

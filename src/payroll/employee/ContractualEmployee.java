@@ -10,8 +10,8 @@ import java.util.List;
 public class ContractualEmployee extends Employee {
 
     public ContractualEmployee(String id, String name, String department,
-                               double dailyRate, int daysWorked) {
-        super(id, name, department, dailyRate, daysWorked);
+                               double dailyRate, int leaveDays) {
+        super(id, name, department, dailyRate, leaveDays);
     }
 
     @Override
@@ -21,7 +21,7 @@ public class ContractualEmployee extends Employee {
 
     @Override
     public List<PayComponent> calculateEarnings(int workingDays) {
-        int paidDays = Math.min(getDaysWorked(), workingDays);
+        int paidDays = getDaysWorked(workingDays);
         List<PayComponent> list = new ArrayList<>();
         list.add(new PayComponent(
                 "Contract Pay (" + paidDays + " days x " + getBaseAmount() + ")",

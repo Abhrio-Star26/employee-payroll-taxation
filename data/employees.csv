@@ -1,12 +1,13 @@
 # Employee master data. Lines starting with # are comments.
 # BaseAmount = monthly basic (PERMANENT) / daily rate (CONTRACTUAL) / monthly stipend (INTERN)
-EmpId,Name,Type,Department,BaseAmount,DaysWorked
-EMP001,Rahul Sharma,PERMANENT,Engineering,85000,26
-EMP002,Priya Das,PERMANENT,Finance,60000,24
-EMP003,Arjun Sen,PERMANENT,HR,40000,26
-EMP004,Sneha Roy,CONTRACTUAL,Engineering,3500,22
-EMP005,Vikram Ghosh,CONTRACTUAL,Facilities,1200,26
-EMP006,Ananya Bose,INTERN,Engineering,20000,26
-EMP007,Rohit Paul,INTERN,Marketing,15000,20
-EMP008,Bad Record,MANAGER,Sales,50000,26
-EMP009,Typo Entry,PERMANENT,Sales,fifty,26
+# LeaveDays  = days absent this month. Days worked = --days (working days) - LeaveDays
+EmpId,Name,Type,Department,BaseAmount,LeaveDays
+EMP001,Rahul Sharma,PERMANENT,Engineering,85000,0
+EMP002,Priya Das,PERMANENT,Finance,60000,2
+EMP003,Arjun Sen,PERMANENT,HR,40000,0
+EMP004,Sneha Roy,CONTRACTUAL,Engineering,3500,4
+EMP005,Vikram Ghosh,CONTRACTUAL,Facilities,1200,0
+EMP006,Ananya Bose,INTERN,Engineering,20000,0
+EMP007,Rohit Paul,INTERN,Marketing,15000,6
+EMP008,Bad Record,MANAGER,Sales,50000,0
+EMP009,Typo Entry,PERMANENT,Sales,fifty,0

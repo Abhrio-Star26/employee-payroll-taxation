@@ -15,8 +15,8 @@ public class PermanentEmployee extends Employee {
     public static final double PROFESSIONAL_TAX = 200.0; // flat per month
 
     public PermanentEmployee(String id, String name, String department,
-                             double monthlyBasic, int daysWorked) {
-        super(id, name, department, monthlyBasic, daysWorked);
+                             double monthlyBasic, int leaveDays) {
+        super(id, name, department, monthlyBasic, leaveDays);
     }
 
     @Override

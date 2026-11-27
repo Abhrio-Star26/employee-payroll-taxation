@@ -62,7 +62,9 @@ public class PaySlip {
         sb.append(LINE).append('\n');
         sb.append(String.format("Employee ID   : %-18s Type       : %s%n", employee.getId(), employee.getType()));
         sb.append(String.format("Name          : %-18s Department : %s%n", employee.getName(), employee.getDepartment()));
-        sb.append(String.format("Working Days  : %-18d Days Worked: %d%n", workingDays, employee.getDaysWorked()));
+        sb.append(String.format("Working Days  : %-18d Leave Days : %d%n",
+                workingDays, employee.getLeaveDays(workingDays)));
+        sb.append(String.format("Days Worked   : %d%n", employee.getDaysWorked(workingDays)));
         sb.append(DASH).append('\n');
 
         sb.append("EARNINGS\n");

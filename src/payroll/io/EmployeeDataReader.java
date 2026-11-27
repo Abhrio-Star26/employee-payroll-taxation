@@ -14,7 +14,10 @@ import java.util.List;
  * Reads the comma-delimited employee master file.
  *
  * Expected columns:
- *   EmpId,Name,Type,Department,BaseAmount,DaysWorked
+ *   EmpId,Name,Type,Department,BaseAmount,LeaveDays
+ *
+ * LeaveDays = days absent. Days worked is calculated later as
+ * (working days from command line - leave days), so it always matches --days.
  *
  * Lines starting with '#' and blank lines are ignored.
  * Bad lines are skipped and reported, so one typo does not stop the payroll run.
@@ -65,15 +68,15 @@ public class EmployeeDataReader {
             EmployeeType type = EmployeeType.fromString(p[2]);
             String dept = p[3].trim();
             double base = Double.parseDouble(p[4].trim());
-            int days = Integer.parseInt(p[5].trim());
+            int leaveDays = Integer.parseInt(p[5].trim());
 
             if (id.isEmpty() || name.isEmpty()) {
                 throw new InvalidEmployeeDataException(lineNo, "id/name cannot be empty");
             }
-            if (base < 0 || days < 0) {
-                throw new InvalidEmployeeDataException(lineNo, "amount/days cannot be negative");
+            if (base < 0 || leaveDays < 0) {
+                throw new InvalidEmployeeDataException(lineNo, "amount/leave days cannot be negative");
             }
-            return EmployeeFactory.create(type, id, name, dept, base, days);
+            return EmployeeFactory.create(type, id, name, dept, base, leaveDays);
 
         } catch (NumberFormatException e) {
             throw new InvalidEmployeeDataException(lineNo, "invalid number (" + e.getMessage() + ")");

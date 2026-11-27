@@ -10,8 +10,8 @@ import java.util.List;
 public class Intern extends Employee {
 
     public Intern(String id, String name, String department,
-                  double monthlyStipend, int daysWorked) {
-        super(id, name, department, monthlyStipend, daysWorked);
+                  double monthlyStipend, int leaveDays) {
+        super(id, name, department, monthlyStipend, leaveDays);
     }
 
     @Override

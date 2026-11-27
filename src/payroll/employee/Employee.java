@@ -13,15 +13,15 @@ public abstract class Employee {
     private final String name;
     private final String department;
     private final double baseAmount;   // monthly basic / daily rate / monthly stipend
-    private final int daysWorked;      // days present in the month
+    private final int leaveDays;       // days absent in the month (from CSV)
 
     protected Employee(String id, String name, String department,
-                       double baseAmount, int daysWorked) {
+                       double baseAmount, int leaveDays) {
         this.id = id;
         this.name = name;
         this.department = department;
         this.baseAmount = baseAmount;
-        this.daysWorked = daysWorked;
+        this.leaveDays = leaveDays;
     }
 
     // ---------- abstract methods (polymorphism) ----------
@@ -42,12 +42,25 @@ public abstract class Employee {
 
     // ---------- common helpers ----------
 
+    /** Leave days, never more than the working days of the month. */
+    public int getLeaveDays(int workingDays) {
+        return Math.min(leaveDays, workingDays);
+    }
+
+    /**
+     * Days actually worked = working days (from command line) - leave days (from CSV).
+     * Always consistent with the --days argument.
+     */
+    public int getDaysWorked(int workingDays) {
+        return workingDays - getLeaveDays(workingDays);
+    }
+
     /** Fraction of the month actually worked (for loss-of-pay). */
     protected double attendanceRatio(int workingDays) {
         if (workingDays <= 0) {
             return 0;
         }
-        return Math.min(daysWorked, workingDays) / (double) workingDays;
+        return getDaysWorked(workingDays) / (double) workingDays;
     }
 
     public static double sum(List<PayComponent> components) {
@@ -64,7 +77,7 @@ public abstract class Employee {
     public String getName() { return name; }
     public String getDepartment() { return department; }
     public double getBaseAmount() { return baseAmount; }
-    public int getDaysWorked() { return daysWorked; }
+    public int getLeaveDays() { return leaveDays; }
 
     @Override
     public String toString() {
